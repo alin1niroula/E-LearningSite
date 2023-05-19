@@ -1,16 +1,22 @@
 from django.shortcuts import render
-
+from .models import *
 # Create your views here.
 from django.views import View
 
 
-class BaseView(View):
+class Base(View):
     views ={}
 
 
 class IndexView(View):
     def get(self, request):
-        return render(request, 'index.html')
+        views = {}
+        views['categories'] = Category.objects.all()
+        views['ourstudentsays'] = OurStudentSays.objects.all()
+        views['courseCategories'] = CourseCategory.objects.all()
+        views['popularcourses'] = PopularCourse.objects.all()
+        views['expertinstructors'] = ExpertInstructors.objects.all()
+        return render(request, 'index.html', views)
 
 
 
@@ -38,5 +44,9 @@ class AboutView(View):
 class TestimonialView(View):
 	def get(self,request):
 		return render(request, 'testimonial.html')
+
+class PopularcoursesView(View):
+    def get(self, request):
+        return render(request, 'popularcourses.html')
 
 
