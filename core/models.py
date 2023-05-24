@@ -62,11 +62,22 @@ class OurStudentSays(models.Model):
 
 class Contact(models.Model):
 	name = models.CharField(max_length = 200)
+	email = models.CharField(max_length = 300, blank = True)
 	subject = models.CharField(max_length=400)
 	message = models.TextField()
 
 	def __str__(self):
 		return self.name
+
+class Information(models.Model):
+    address1 = models.CharField(max_length=500)
+    address2 = models.CharField(max_length=500)
+    phone = models.CharField(max_length=20)
+    email = models.EmailField(max_length=300)
+
+    def __str__(self):
+        return f"{self.address1}  {self.address2}"
+
 
 class Gallary(models.Model):
 	name = models.CharField(max_length = 200, blank = True)
