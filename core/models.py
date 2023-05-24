@@ -92,6 +92,7 @@ class Slider(models.Model):
     image = models.ImageField(upload_to='media')
     url = models.URLField(max_length=1000)
     description = models.TextField(blank = True)
+    rank = models.IntegerField(default=0 )
 
     def __str__(self):
         return self.name
