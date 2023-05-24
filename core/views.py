@@ -16,6 +16,7 @@ class IndexView(View):
         views['courseCategories'] = CourseCategory.objects.all()
         views['popularcourses'] = PopularCourse.objects.all()
         views['expertinstructors'] = ExpertInstructors.objects.all()
+        views['gallary'] = Gallary.objects.all()
         return render(request, 'index.html', views)
 
 
@@ -26,8 +27,12 @@ class ContactView(View):
 
 class CoursesView(View):
     def get(self, request):
-        # Add your logic here to retrieve course data or perform other actions
-        return render(request, 'courses.html')
+    	views = {}
+    	views['categories'] = Category.objects.all()
+    	views['popularcourses'] = PopularCourse.objects.all()
+    	views['ourstudentsays'] = OurStudentSays.objects.all()
+
+    	return render(request, 'courses.html', views)
 	
 
 
