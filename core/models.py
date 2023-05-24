@@ -87,3 +87,11 @@ class Gallary(models.Model):
 		return str(self.name)
 
         
+class Slider(models.Model):
+    name = models.CharField(max_length=300)
+    image = models.ImageField(upload_to='media')
+    url = models.URLField(max_length=1000)
+    description = models.TextField(blank = True)
+
+    def __str__(self):
+        return self.name

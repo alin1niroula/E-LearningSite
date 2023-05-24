@@ -13,11 +13,12 @@ class IndexView(View):
     def get(self, request):
         views = {}
         views['categories'] = Category.objects.all()
-        views['ourstudentsays'] = OurStudentSays.objects.all()
+        views['ourstuduntsays'] = OurStudentSays.objects.all()
         views['courseCategories'] = CourseCategory.objects.all()
         views['popularcourses'] = PopularCourse.objects.all()
-        views['expertinstructors'] = ExpertInstructors.objects.all()
+        views['expertInstructors'] = ExpertInstructors.objects.all()
         views['gallary'] = Gallary.objects.all()
+        views['sliders'] = Slider.objects.all
         return render(request, 'index.html', views)
 
 
