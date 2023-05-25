@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
+from .forms import EnrolForm
 # Create your views here.
 from django.views import View
 from django.utils.datastructures import MultiValueDictKeyError
@@ -82,3 +83,17 @@ class PopularcoursesView(View):
         return render(request, 'popularcourses.html')
 
 
+class EnrolView(View):
+    def get(self, request):
+        form = EnrolForm()
+        return render(request, 'enrol.html', {'form': form})
+
+    def post(self, request):
+        form = EnrolForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('enrol_success')
+        return render(request, 'enrol.html', {'form': form})
+
+def enrol_success(request):
+    return render(request, 'enrol_success.html')

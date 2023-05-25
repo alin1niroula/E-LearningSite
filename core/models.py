@@ -1,5 +1,5 @@
 from django.db import models
-
+from django import forms
 # Create your models here.
 
 
@@ -96,3 +96,17 @@ class Slider(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Enrol(models.Model):
+	name = models.CharField(max_length = 300)
+	surname = models.CharField(max_length = 300)
+	email = models.EmailField(max_length = 500)
+	image = models.ImageField(upload_to = 'media', blank = True)
+	certificate = models.FileField(upload_to='media')
+	phone = models.IntegerField()
+	course = models.CharField(max_length = 300)
+
+
+	def __str__(self):
+		return self.name

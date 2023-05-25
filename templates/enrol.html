@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- enrol.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enrolment Form</title>
+    <style>
+        .enrol-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .enrol-form input,
+        .enrol-form select,
+        .enrol-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .btn-enrol {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-enrol:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    
+    <form method="post" enctype="multipart/form-data" class="enrol-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-enrol">Enrol</button>
+    </form>
+ 
+</body>
+</html>
+
+{% endblock %}
